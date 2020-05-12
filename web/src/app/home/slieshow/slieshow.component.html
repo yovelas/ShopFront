@@ -1,0 +1,16 @@
+<div id="showcase">
+    <div id='slider' class='swipe'>
+        <div class='swipe-wrap'>
+            <div><img src="./img/01.jpg" alt=""></div>
+            <div><img src="./img/02.jpg" alt=""></div>
+            <div><img src="./img/03.jpg" alt=""></div>
+      </div>
+      <div class="slider-control">
+        <button class="left" onclick="mySwipe.prev()"><i class="icon-angle-left"></i></button>
+        <button class="right" onclick="mySwipe.next()"><i class="icon-angle-right"></i></button>
+      </div>
+    </div>
+    <script>
+      window.mySwipe = Swipe(document.getElementById('slider'));
+    </script>
+  </div>

@@ -1,0 +1,84 @@
+
+/* 导航 */
+#nav{
+  line-height: 25px;
+  margin-bottom: 20px;
+  color: #999;
+}
+.container_innav{
+    height: 73px;
+    position: relative;
+    z-index: 100;
+}
+
+/* 导航菜单 */
+#nav li,
+#nav li a {
+  display: inline-block;
+  padding: 7px 15px;
+  text-decoration: none;
+  color: #3b3b3b;
+}
+#nav li a:hover {
+  background: #eee;
+}
+#nav .active {
+  background: #eee;
+}
+.toggle-btn {
+  display: none;
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+
+  /* 切换按钮 */
+  .toggle-btn {
+    display: inline-block;
+    font-size: 25px;
+    text-decoration: none;
+    background: #000;
+    color: #fff;
+    padding: 7px 10px;
+    position: absolute;
+    right: 10px;
+  }
+
+  /* 隐藏关闭按钮 */
+  .close {
+    display: none;
+  }
+  /* 初始隐藏导航 */
+  #nav_con {
+    display: none;
+  }
+  
+  /* 导航为目标状态时的样式 */
+  #nav:target #nav_con {
+    padding-inline-start:0;
+    display: block;
+    background: #000;
+    width: 100%;
+    position: relative;
+    top: 35px;
+  }
+  /* 目标状态下的导航的 li 与 a */
+  #nav:target li,
+  #nav:target li a {
+    display: block;
+    color: #eee;
+    text-align: left;
+  }
+  /* 目标状态下的导航的列表下的 a 标签的悬停样式 */
+  #nav:target li a:hover {
+    background: #3b3b3b;
+  }
+  /* 目标状态下导航的激活状态的样式 */
+  #nav:target .active {
+    background: #272727;
+  }
+  /* 导航为目标状态的时候显示关闭按钮 */
+  #nav:target .close {
+    display: inline-block;
+  }
+}

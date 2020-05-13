@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Swipe } from  '../../../assets/js/swipe.js';
+
+
 
 @Component({
   selector: 'app-slieshow',
@@ -7,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SlieshowComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
   }
 
 }
+onload = function(){
+console.log("aa");
 
+console.log(Swipe);
+console.log(document.getElementById('slider'));
+console.log(Swipe(document.getElementById('slider')));
+var mySwipe = Swipe(document.getElementById('slider'));
+}

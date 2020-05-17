@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SlieshowComponent } from './home/slieshow/slieshow.component';
+import { ClassifyComponent } from './classify/classify/classify.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SlieshowComponent } from './home/slieshow/slieshow.component';
     FooterComponent,
     NavComponent,
     PageNotFoundComponent,
-    SlieshowComponent
+    SlieshowComponent,
+    ClassifyComponent
   ],
   imports: [
     BrowserModule,

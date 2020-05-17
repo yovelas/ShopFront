@@ -5,3 +5,23 @@
     font-size: 50px;
     line-height: 80px;
   }
+
+/* 响应式设计 */
+/* 设置三个断点分别为：屏幕宽度大于1200，小于960，小于767 */
+@media (min-width: 1200px) {
+  #header {
+    width: 1170px;
+  }
+}
+
+@media (max-width: 959px) {
+  #header {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  #header {
+    width: 100%;
+  }
+}

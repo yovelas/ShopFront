@@ -81,4 +81,7 @@
   #nav:target .close {
     display: inline-block;
   }
+  #nav:target .open {
+    display: none;
+  }
 }

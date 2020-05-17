@@ -9,7 +9,7 @@ p {
   height: 100px;
   line-height: 25px;
   background: #eee;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 #mainbody,
 #sidebar {
@@ -24,4 +24,35 @@ p {
 #sidebar {
   width: 320px;
   background: #ffcbdd;
+}
+
+
+/* 响应式设计 */
+/* 设置三个断点分别为：屏幕宽度大于1200，小于960，小于767 */
+@media (min-width: 1200px) {
+  #mainbody {
+    width: 770px;
+    margin-right: 20px;
+  }
+  #sidebar {
+    width: 380px;
+  }
+}
+
+@media (max-width: 959px) {
+  #mainbody {
+    width: 67%;
+  }
+  #sidebar {
+    width: 30%;
+    float: right;
+  }
+}
+
+@media (max-width: 767px) {
+  #mainbody,
+  #sidebar {
+    float: none;
+    width: 100%;
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Swipe } from  '../../../assets/js/swipe.js';
+import {  } from 'bootstrap';
 
 
 

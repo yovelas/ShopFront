@@ -5,19 +5,26 @@
 }
 
 #right{
-    background: blanchedalmond;
+    /* background: blanchedalmond; */
     float: left;
     width: 78%;
     min-height: 1200px;
 }
 .active{
-  background: #eee;
-  color:black;
-  border: #eee solid 1px;
+  background: white;
+  color:red;
 }
-
+.list-group-item:hover{
+  background: white;
+  color:red;
+}
 #left button{
     outline: none;
+}
+
+.list-group-item{
+    background: #eee;
+    border: none;
 }
 
 #rightContent{

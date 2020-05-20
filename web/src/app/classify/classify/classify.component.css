@@ -1,5 +1,5 @@
 #left{
-    background: pink;
+    background: #eee;
     float: left;
     width: 22%;
 }
@@ -23,7 +23,7 @@
 }
 
 .list-group-item{
-    background: #eee;
+    background: #f8f8f8;
     border: none;
 }
 

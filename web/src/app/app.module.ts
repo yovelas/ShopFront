@@ -10,6 +10,8 @@ import { NavComponent } from './nav/nav.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SlieshowComponent } from './home/slieshow/slieshow.component';
 import { ClassifyComponent } from './classify/classify/classify.component';
+import { GoodsComponent } from './goods/goods.component';
+import { GoodsListComponent } from './goods-list/goods-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ClassifyComponent } from './classify/classify/classify.component';
     NavComponent,
     PageNotFoundComponent,
     SlieshowComponent,
-    ClassifyComponent
+    ClassifyComponent,
+    GoodsComponent,
+    GoodsListComponent
   ],
   imports: [
     BrowserModule,

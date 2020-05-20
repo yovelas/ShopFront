@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { Button } from 'protractor';
+import { GoodsService } from '../../service/goods.service';
 
 @Component({
   selector: 'app-classify',
@@ -9,72 +10,88 @@ import { Button } from 'protractor';
 })
 export class ClassifyComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private goodService:GoodsService
+  ) { }
+
 
   ngOnInit(): void {
-
+    var _this = this;
     $.ajax({
       type: "GET",
-      url: "http://localhost:8080/goods/type",
+      url: this.goodService.domain+"goods/type",
       async: false,
       contentType: "application/json",
       dataType: "json",
       crossDomain: true,
       success: function (data) {
         console.log(data);
+        // 清空静态按扭
         $(".list-group").html("");
+        // 填充动态按扭
         for(var i = 0;i<data.length;i++){
           var button = <HTMLButtonElement>document.createElement("button");
           button.innerHTML = data[i].goodsMainTypeName;
           $(button).addClass("list-group-item list-group-item-action");
-          $(button).hover(
-            function(){
-              $(this).css("color","red");
-            },function(){
-              $(this).css("color","#495057");
-          })
-          $(button).attr("id",data[i].goodsMainTypeId);
+          $(button).attr("id",i);
+          $(button).css("background-color","#f8f8f8");
+          $(button).css("border","none");
+          if(window.innerWidth < 590){
+            $(button).css("padding-left","5px");
+            $(button).css("padding-right","5px");
+            $(button).css("text-align","center");
+          }
 
           $(".list-group").append($(button));
         }
-        
-        console.log($("#rightContent").html(""));
+        $(".list-group").on("mouseover", "button", function(){
+          $(this).css("background","white");
+        })
+        $(".list-group").on("mouseout", "button", function(){
+          // $(this).css("color","#495057");
+          $(this).css("background","#f8f8f8");
+        })
+
+        // 清空静态列表
+        $("#rightContent").html("");
+        // 第一次进入页面强制填充第一项动态列表
+        $($(".list-group-item")[0]).css("color","red");
         for(var j = 0; j<data[0].goodsSubTypes.length; j++){
-            console.log(data[0].goodsSubTypes[j]);
-            var article = <HTMLElement>document.createElement("article");
-            $(article).css("text-align","center");
-            if(window.innerWidth<450){
-              article.innerHTML = "<img width=80 height=80 src='http://localhost:8080/file/download/"+data[0].goodsSubTypes[j].goodsSubTypePicture+"/'><p style='text-align:center'>" + data[0].goodsSubTypes[j].goodsSubTypeName + "</p>";
-            }else{
-              article.innerHTML = "<img src='http://localhost:8080/file/download/"+data[0].goodsSubTypes[j].goodsSubTypePicture+"/'><p style='text-align:center'>" + data[0].goodsSubTypes[j].goodsSubTypeName + "</p>";
-            }
-            console.log($("#rightContent").find("article"));
-            $("#rightContent").append(article);
+          data[0].goodsSubTypes[j];
+          var article = <HTMLElement>document.createElement("article");
+          $(article).css("text-align","center");
+          if(window.innerWidth<450){
+            article.innerHTML = "<img width=80 height=80 src='"+_this.goodService.domain+"file/download/"+data[0].goodsSubTypes[j].goodsSubTypePicture+"/'><p style='text-align:center'>" + data[0].goodsSubTypes[j].goodsSubTypeName + "</p>";
+          }else{
+            article.innerHTML = "<img src='"+_this.goodService.domain+"file/download/"+data[0].goodsSubTypes[j].goodsSubTypePicture+"/'><p style='text-align:center'>" + data[0].goodsSubTypes[j].goodsSubTypeName + "</p>";
           }
+          $("#rightContent").find("article");
+          $("#rightContent").append(article);
+        }
 
-
-        var resize = function(){
+        // 窗口改变事件
+        $(window).on("resize",function(){
           console.log(window.innerWidth);
           if(window.innerWidth<450){
             $("#rightContent img").css("width","80px").css("height","80px")
           }
-        }
-        $(window).on("resize",resize)
-        
+        });
+       
+        // 按扭点击事件处理
         $(".list-group").on("click","button",function(e){
-          var list = data[--e.target.id].goodsSubTypes;
-          console.log("www",e.target.id,list);
-          console.log($("#rightContent").html(""));
+          var list = data[e.target.id].goodsSubTypes;
+          $(".list-group button").css("color","#495057");
+          e.target.style.color = "red";
+          $("#rightContent").html("");
           for(var i = 0; i<list.length; i++){
-            console.log(list[i]);
             var article = <HTMLElement>document.createElement("article");
             $(article).css("text-align","center");
             if(window.innerWidth<450){
-              article.innerHTML = "<img width=80 height=80 src='http://localhost:8080/file/download/"+list[i].goodsSubTypePicture+"/'><p style='text-align:center'>" + list[i].goodsSubTypeName + "</p>";
+              article.innerHTML = "<img width=80 height=80 src='"+_this.goodService.domain+"file/download/"+list[i].goodsSubTypePicture+"/'><p style='text-align:center'>" + list[i].goodsSubTypeName + "</p>";
             }else{
-              article.innerHTML = "<img src='http://localhost:8080/file/download/"+list[i].goodsSubTypePicture+"/'><p style='text-align:center'>" + list[i].goodsSubTypeName + "</p>";
+              article.innerHTML = "<img src='"+_this.goodService.domain+"file/download/"+list[i].goodsSubTypePicture+"/'><p style='text-align:center'>" + list[i].goodsSubTypeName + "</p>";
             }
-            console.log($("#rightContent").find("article"));
+            $("#rightContent").find("article");
             $("#rightContent").append(article);
           }
         });

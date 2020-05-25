@@ -71,7 +71,6 @@ export class ClassifyComponent implements OnInit {
 
         // 窗口改变事件
         $(window).on("resize",function(){
-          console.log(window.innerWidth);
           if(window.innerWidth<450){
             $("#rightContent img").css("width","80px").css("height","80px")
           }

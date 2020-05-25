@@ -13,6 +13,10 @@ import { ClassifyComponent } from './classify/classify/classify.component';
 import { GoodsComponent } from './goods/goods.component';
 import { GoodsListComponent } from './goods-list/goods-list.component';
 
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faSquare, faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +32,8 @@ import { GoodsListComponent } from './goods-list/goods-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

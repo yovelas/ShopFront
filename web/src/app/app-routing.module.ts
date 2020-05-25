@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'classify', component: ClassifyComponent },
-  { path: 'goods', component: GoodsComponent },
-  { path: 'lists', component: GoodsListComponent },
+  { path: 'goods/:id', component: GoodsComponent },
+  { path: 'lists/:key', component: GoodsListComponent },
   { path: '**', component: PageNotFoundComponent }
 ]
 

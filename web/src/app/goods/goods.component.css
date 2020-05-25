@@ -21,7 +21,7 @@
     width: 100%;
 }
 #picList{
-    background: antiquewhite;
+    /* background: antiquewhite; */
     text-align: left;
     margin-top: 10px;
 }
@@ -72,6 +72,13 @@ select,button{
     outline: none;
     background: white;
 }
+
+#parameter button{
+    font-size: 15px;
+    font-weight: 400;
+}
+
+
 #amount span button{
     width: 25px;
 }

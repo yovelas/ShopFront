@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import { Button } from 'protractor';
 import { GoodsService } from '../../service/goods.service';
+import { ActivatedRoute, Router } from '@angular/router'
 
 @Component({
   selector: 'app-classify',
@@ -11,7 +11,9 @@ import { GoodsService } from '../../service/goods.service';
 export class ClassifyComponent implements OnInit {
 
   constructor(
-    private goodService:GoodsService
+    private goodService:GoodsService,
+    private Route: ActivatedRoute,
+    private Router: Router
   ) { }
 
 
@@ -32,6 +34,7 @@ export class ClassifyComponent implements OnInit {
         for(var i = 0;i<data.length;i++){
           var button = <HTMLButtonElement>document.createElement("button");
           button.innerHTML = data[i].goodsMainTypeName;
+          button.setAttribute("paTypeId",data[i].goodsMainTypeId)
           $(button).addClass("list-group-item list-group-item-action");
           $(button).attr("id",i);
           $(button).css("background-color","#f8f8f8");
@@ -59,6 +62,7 @@ export class ClassifyComponent implements OnInit {
         for(var j = 0; j<data[0].goodsSubTypes.length; j++){
           data[0].goodsSubTypes[j];
           var article = <HTMLElement>document.createElement("article");
+          article.setAttribute("chTypeId",data[0].goodsSubTypes[j].goodsSubTypeId);
           $(article).css("text-align","center");
           if(window.innerWidth<450){
             article.innerHTML = "<img width=80 height=80 src='"+_this.goodService.domain+"file/download/"+data[0].goodsSubTypes[j].goodsSubTypePicture+"/'><p style='text-align:center'>" + data[0].goodsSubTypes[j].goodsSubTypeName + "</p>";
@@ -68,6 +72,12 @@ export class ClassifyComponent implements OnInit {
           $("#rightContent").find("article");
           $("#rightContent").append(article);
         }
+        document.querySelectorAll("article").forEach(function(e){
+          e.addEventListener("click",function(){
+            console.log(this.getAttribute("chTypeId"));
+            _this.Router.navigate(['lists/type='+this.getAttribute("chTypeId")]);
+          })
+        }) // Handler Enging
 
         // 窗口改变事件
         $(window).on("resize",function(){
@@ -84,6 +94,7 @@ export class ClassifyComponent implements OnInit {
           $("#rightContent").html("");
           for(var i = 0; i<list.length; i++){
             var article = <HTMLElement>document.createElement("article");
+            article.setAttribute("chTypeId",list[i].goodsSubTypeId);
             $(article).css("text-align","center");
             if(window.innerWidth<450){
               article.innerHTML = "<img width=80 height=80 src='"+_this.goodService.domain+"file/download/"+list[i].goodsSubTypePicture+"/'><p style='text-align:center'>" + list[i].goodsSubTypeName + "</p>";
@@ -93,6 +104,12 @@ export class ClassifyComponent implements OnInit {
             $("#rightContent").find("article");
             $("#rightContent").append(article);
           }
+          document.querySelectorAll("article").forEach(function(e){
+            e.addEventListener("click",function(){
+              console.log(this.getAttribute("chTypeId"));
+              _this.Router.navigate(['lists/type='+this.getAttribute("chTypeId")]);
+            })
+          }) // Handler Enging
         });
 
       },

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoodsService } from '../service/goods.service';
 import * as $ from 'jquery';
+import { ActivatedRoute, Router } from '@angular/router'
 
 @Component({
   selector: 'app-nav',
@@ -9,7 +10,12 @@ import * as $ from 'jquery';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private goodService:GoodsService) { }
+  constructor(
+    private goodService:GoodsService,
+    private Router: Router
+  ) { }
+
+  searchText:String;
 
   ngOnInit(): void {
     var _this = this;
@@ -37,6 +43,12 @@ export class NavComponent implements OnInit {
         $("#nav a").css("display","inline-block");
       }
     }
+  }
+
+  search(){
+    console.log("Search:",this.searchText);
+    this.Router.navigate(['lists/'+this.searchText]);
+    this.searchText = "";
   }
 
 }

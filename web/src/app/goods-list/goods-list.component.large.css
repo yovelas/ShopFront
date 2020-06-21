@@ -16,6 +16,8 @@ article img{
     border-top-right-radius: 5px;
 }
 article p{
+    float: left;
+    width: 100%;
     padding: 0 5px 10px 5px;
     font-size: 14px;
 }
@@ -26,6 +28,13 @@ article p:nth-of-type(1){
     font-weight: 700;
     padding-bottom: 0;
     color: #f40;
+    padding: 0 5px 10px 5px;
+    font-size: 14px;
+}
+article p:nth-of-type(2){
+    padding: 0 5px 10px 5px;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 @media (max-width: 800px) {

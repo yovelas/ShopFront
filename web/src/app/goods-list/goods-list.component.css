@@ -23,6 +23,7 @@ nav li:nth-of-type(6){
     padding-right: 12px;
 }
 
+
 @media (max-width: 400px) {
     nav li{
         padding: 5px 10px;

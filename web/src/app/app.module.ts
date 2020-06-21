@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,10 @@ import { GoodsComponent } from './goods/goods.component';
 import { GoodsListComponent } from './goods-list/goods-list.component';
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faSquare, faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import { PersonComponent } from './person/person/person.component';
+import { CarComponent } from './car/car/car.component';
+import { LoginComponent } from './user/login/login.component';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
@@ -28,12 +32,17 @@ import { faSquare, faCheckSquare } from '@fortawesome/free-solid-svg-icons';
     SlieshowComponent,
     ClassifyComponent,
     GoodsComponent,
-    GoodsListComponent
+    GoodsListComponent,
+    PersonComponent,
+    CarComponent,
+    LoginComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
